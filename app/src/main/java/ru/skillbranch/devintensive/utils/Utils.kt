@@ -3,12 +3,11 @@ package ru.skillbranch.devintensive.utils
 object Utils {
     fun parseFullName(fullName: String?): Pair<String?, String?>{
 
-//     TODO("Repair Factory method to show not null if the fullname is an empty string or null")
-
         val parts: List<String>? = fullName?.split(" ")
-        val firstName = parts?.getOrNull(0)
-        val lastName = parts?.getOrNull(1)
-//        return Pair(firstName, lastName)
+        var firstName = parts?.getOrNull(0)
+        var lastName = parts?.getOrNull(1)
+        if (firstName.isNullOrBlank()) firstName = null
+        if (lastName.isNullOrBlank()) lastName = null
         return firstName to lastName
     }
 
@@ -17,6 +16,7 @@ object Utils {
     }
 
     fun toInitials(firstName: String?, lastName: String?): String? {
-        TODO("not implemented")
+//        val initials = firstName[0] ?: "" + lastName[0]
+        return ""
     }
 }

@@ -32,8 +32,6 @@ data class User(
         private var lastId: Int = -1
         fun makeUser(fullName: String?): User{
             lastId++
-
-//          TODO("Repair Factory method to show not null if the fullname is an empty string or null")
             val (firstName, lastName) = Utils.parseFullName(fullName)
             return User(id = "$lastId", firstName = firstName, lastName = lastName)
         }
