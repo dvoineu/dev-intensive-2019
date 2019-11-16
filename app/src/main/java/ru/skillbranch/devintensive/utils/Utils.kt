@@ -16,7 +16,10 @@ object Utils {
     }
 
     fun toInitials(firstName: String?, lastName: String?): String? {
-//        val initials = firstName[0] ?: "" + lastName[0]
-        return ""
+
+        val firstChar = firstName?.trim()?.firstOrNull() ?: ""
+        val secondChar = lastName?.trim()?.firstOrNull() ?: ""
+        val initials = "${firstChar.toString().toUpperCase()}${secondChar.toString().toUpperCase()}"
+        return if(initials.equals("")) null else initials
     }
 }
