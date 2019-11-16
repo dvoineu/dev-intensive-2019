@@ -39,6 +39,37 @@ data class User(
 
     }
 
+    data class Builder(
+        var id: String? = "0",
+        var firstName: String? = null,
+        var lastName: String? = null,
+        var avatar: String? = null,
+        var rating: Int = 0,
+        var respect: Int = 0,
+        var lastVisit: Date? = Date(),
+        var isOnline: Boolean = false) {
+
+        fun id(id: String?) = apply { this.id = id }
+        fun firstName(firstName: String?) = apply { this.firstName = firstName }
+        fun lastName(lastName: String?) = apply { this.lastName = lastName }
+        fun avatar(bread: String?) = apply { this.avatar = bread }
+        fun rating(rating: Int) = apply { this.rating = rating }
+        fun respect(respect: Int) = apply { this.respect = respect }
+        fun lastVisit(lastVisit: Date?) = apply { this.lastVisit = lastVisit }
+        fun isOnline(isOnline: Boolean) = apply { this.isOnline = isOnline }
+        fun build() = Builder(id, firstName, lastName, avatar, rating, respect, lastVisit, isOnline)
+    }
+
+//    User.Builder().id(s)
+//    .firstName(s)
+//    .lastName(s)
+//    .avatar(s)
+//    .rating(n)
+//    .respect(n)
+//    .lastVisit(d)
+//    .isOnline(b)
+//    .build()
+
     fun printMe() = println("""
             id: $id,
             firstName: $firstName,
