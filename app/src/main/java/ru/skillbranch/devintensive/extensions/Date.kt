@@ -28,7 +28,7 @@ fun Date.add(value: Int, units: TimeUnits = TimeUnits.SECOND):Date{
 }
 
 fun Date.humanizeDiff(date:Date = Date()): String {
-    TODO("not implemented")
+    return Date().toString()
 }
 
 
