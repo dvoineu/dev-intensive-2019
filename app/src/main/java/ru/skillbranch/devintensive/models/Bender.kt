@@ -17,10 +17,14 @@ class Bender (var status: Status = Status.NORMAL, var question: Question = Quest
     fun listenAnswer(answer: String): Pair<String, Triple<Int, Int, Int>>{
         return if(question.answers.contains(answer)){
             question = question.nextQuestion()
-            "Отлично - это правильный ответ!\n${question.question}" to status.color
+            "Отлично - ты справился\n${question.question}" to status.color
+        }else if(status == Status.CRITICAL){
+            status = Status.NORMAL
+            question = Question.NAME
+            "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
         }else{
             status = status.nextStatus()
-            "Это не правильный ответ!\n${question.question}" to status.color
+            "Это неправильный ответ\n${question.question}" to status.color
 
         }
     }
@@ -61,4 +65,16 @@ class Bender (var status: Status = Status.NORMAL, var question: Question = Quest
 
         abstract fun nextQuestion(): Question
     }
+
+//    Question.NAME -> "Имя должно начинаться с заглавной буквы"
+//
+//    Question.PROFESSION -> "Профессия должна начинаться со строчной буквы"
+//
+//    Question.MATERIAL -> "Материал не должен содержать цифр"
+//
+//    Question.BDAY -> "Год моего рождения должен содержать только цифры"
+//
+//    Question.SERIAL -> "Серийный номер содержит только цифры, и их 7"
+//
+//    Question.IDLE -> //игнорировать валидацию
 }
